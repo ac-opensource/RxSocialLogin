@@ -43,13 +43,6 @@ public class JavaApplication extends Application {
 
             builder.google(getString(R.string.google_api_key), config -> config.setRequireEmail(true));
 
-            builder.kakao(config -> {
-                config.setRequireAgeRange(true);
-                config.setRequireBirthday(true);
-                config.setRequireEmail(true);
-                config.setRequireGender(true);
-            });
-
             builder.line(getString(R.string.line_api_channel));
 
             builder.linkedin(getString(R.string.linkedin_api_key),

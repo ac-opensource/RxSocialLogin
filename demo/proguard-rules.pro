@@ -19,8 +19,6 @@
 -dontwarn org.conscrypt.**
 -keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
 
-## Kakao
--keep class com.kakao.** { *; }
 -keepattributes Signature
 -keepclassmembers class * {
   public static <fields>;

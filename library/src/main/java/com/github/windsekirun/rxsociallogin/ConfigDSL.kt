@@ -10,7 +10,6 @@ import com.github.windsekirun.rxsociallogin.intenal.impl.ConfigFunction
 import com.github.windsekirun.rxsociallogin.intenal.impl.invoke
 import com.github.windsekirun.rxsociallogin.intenal.model.PlatformType
 import com.github.windsekirun.rxsociallogin.intenal.model.SocialConfig
-import com.github.windsekirun.rxsociallogin.kakao.KakaoConfig
 import com.github.windsekirun.rxsociallogin.line.LineConfig
 import com.github.windsekirun.rxsociallogin.linkedin.LinkedinConfig
 import com.github.windsekirun.rxsociallogin.naver.NaverConfig
@@ -84,10 +83,6 @@ class ConfigDSLBuilder(application: Application) : BaseConfigDSLBuilder(applicat
         typeMap[PlatformType.GOOGLE] = GoogleConfig.apply(clientTokenId, invoke(setup))
     }
 
-    fun kakao(setup: KakaoConfig.() -> Unit = {}) {
-        typeMap[PlatformType.KAKAO] = KakaoConfig.apply(invoke(setup))
-    }
-
     fun linkedin(clientId: String, clientSecret: String, redirectUri: String,
                  setup: LinkedinConfig.() -> Unit = {}) {
         typeMap[PlatformType.LINKEDIN] = LinkedinConfig.apply(clientId, clientSecret, redirectUri, invoke(setup))
@@ -134,11 +129,6 @@ class ConfigBuilder(application: Application) : BaseConfigDSLBuilder(application
     @JvmOverloads
     fun google(clientTokenId: String, setup: ConfigFunction<GoogleConfig> = EmptyFunction()) {
         typeMap[PlatformType.GOOGLE] = GoogleConfig.apply(clientTokenId, setup)
-    }
-
-    @JvmOverloads
-    fun kakao(setup: ConfigFunction<KakaoConfig> = EmptyFunction()) {
-        typeMap[PlatformType.KAKAO] = KakaoConfig.apply(setup)
     }
 
     @JvmOverloads

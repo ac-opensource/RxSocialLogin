@@ -22,8 +22,6 @@ import com.github.windsekirun.rxsociallogin.intenal.model.PlatformType.*
 import com.github.windsekirun.rxsociallogin.intenal.model.SocialConfig
 import com.github.windsekirun.rxsociallogin.intenal.rx.SocialObservable
 import com.github.windsekirun.rxsociallogin.intenal.utils.weak
-import com.github.windsekirun.rxsociallogin.kakao.KakaoLogin
-import com.github.windsekirun.rxsociallogin.kakao.KakaoSDKAdapter
 import com.github.windsekirun.rxsociallogin.line.LineLogin
 import com.github.windsekirun.rxsociallogin.linkedin.LinkedinLogin
 import com.github.windsekirun.rxsociallogin.naver.NaverLogin
@@ -35,7 +33,6 @@ import com.github.windsekirun.rxsociallogin.vk.VKLogin
 import com.github.windsekirun.rxsociallogin.windows.WindowsLogin
 import com.github.windsekirun.rxsociallogin.wordpress.WordpressLogin
 import com.github.windsekirun.rxsociallogin.yahoo.YahooLogin
-import com.kakao.auth.KakaoSDK
 import com.twitter.sdk.android.core.Twitter
 import com.twitter.sdk.android.core.TwitterAuthConfig
 import com.vk.sdk.VKAccessToken
@@ -76,7 +73,7 @@ object RxSocialLogin {
     fun initialize(fragmentActivity: FragmentActivity) {
         val map = configMap.map {
             it.key to when (it.key) {
-                KAKAO -> KakaoLogin(fragmentActivity)
+                KAKAO -> GoogleLogin(fragmentActivity)
                 GOOGLE -> GoogleLogin(fragmentActivity)
                 FACEBOOK -> FacebookLogin(fragmentActivity)
                 LINE -> LineLogin(fragmentActivity)
@@ -208,7 +205,7 @@ object RxSocialLogin {
     }
 
     private fun initKakao() {
-        KakaoSDK.init(KakaoSDKAdapter(application!!.applicationContext))
+
     }
 
     private fun initFacebook(config: FacebookConfig) {

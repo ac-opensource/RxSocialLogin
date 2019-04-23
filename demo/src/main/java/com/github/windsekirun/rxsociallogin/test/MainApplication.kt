@@ -43,13 +43,6 @@ class MainApplication : Application() {
                 requireEmail = true
             }
 
-            kakao {
-//                requireAgeRange = true
-                requireBirthday = true
-//                requireEmail = true
-//                requireGender = true
-            }
-
             line(getString(R.string.line_api_channel))
 
             linkedin(getString(R.string.linkedin_api_key),
